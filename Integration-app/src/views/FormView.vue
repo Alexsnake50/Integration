@@ -65,7 +65,7 @@ import ValidationError from '../components/ValidationFailed.vue'
         if(this.validateForm){
           fetch('http://integration/Integration-back-end/integration.php',{
           method:"post",
-          data:JSON.stringify({name: this.name, email: this.email, phone: this.phone, price: this.price})
+          body:JSON.stringify({name: this.name, email: this.email, phone: this.phone, price: this.price})
         }).then(function(data){
           console.log(data);
         })
