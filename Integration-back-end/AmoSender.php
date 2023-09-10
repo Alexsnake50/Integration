@@ -70,12 +70,12 @@ class AmoSender
         $options = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer '
+                'Authorization' => 'Bearer '.ACCESS_TOKEN
             ],
             'json' => $leadData
         ];
         try {
-            $response = $this->http->request('POST', 'test'.$urn, $options);
+            $response = $this->http->request('POST', HOST.$urn, $options);
             return json_decode($response->getBody()->getContents(),true);
         } catch (ClientException $e) {
             echo $e;
