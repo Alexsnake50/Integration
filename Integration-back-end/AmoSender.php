@@ -81,8 +81,4 @@ class AmoSender
             echo $e;
         }
     }
-
-    private function refreshToken(){
-
-    }
 }
