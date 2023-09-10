@@ -11,7 +11,6 @@ class AmoSender
     public function __construct(array $body){
         $this->body = $body;
         $this->http = new Http();
-        $this->reddis = new Predis\Client();
     }
 
     public function handle(){
