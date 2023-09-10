@@ -8,17 +8,20 @@ class AmoSender
 {
     private array $body;
 
-    public function __construct(array $body){
+    public function __construct(array $body)
+    {
         $this->body = $body;
         $this->http = new Http();
     }
 
-    public function handle(){
+    public function handle()
+    {
         $contactId=$this->createContact();
         $this->createLead($contactId);
     }
 
-    private function createContact(){
+    private function createContact():int
+    {
         $contactBody =  [
             [
                 "name" => $this->body['name'],
@@ -48,7 +51,8 @@ class AmoSender
         return $response['_embedded']['contacts'][0]['id'];
     }
 
-    private function createLead(int $contactId){
+    private function createLead(int $contactId)
+    {
         $leadBody =  [
             [
                 "name" => $this->body['name'],
@@ -65,7 +69,8 @@ class AmoSender
         $this->send($leadBody,'api/v4/leads');
     }
 
-    private function send(array $Data, string $urn){
+    private function send(array $Data, string $urn):array
+    {
         $options = [
             'headers' => [
                 'Content-Type' => 'application/json',
