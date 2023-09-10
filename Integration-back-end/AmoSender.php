@@ -65,13 +65,13 @@ class AmoSender
         $this->send($leadBody,'api/v4/leads');
     }
 
-    private function send(array $leadData, string $urn){
+    private function send(array $Data, string $urn){
         $options = [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer '.ACCESS_TOKEN
             ],
-            'json' => $leadData
+            'json' => $Data
         ];
         try {
             $response = $this->http->request('POST', HOST.$urn, $options);
